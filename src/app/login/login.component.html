@@ -1,6 +1,7 @@
 <div class="container">
   <div class="main">
     <div class="row">
+      <!-- left-side -->
       <div class="col-md-6 left-side d-flex flex-column justify-content-center">
         <div class="menue">
           <i class="fas fa-bars"></i>
@@ -13,22 +14,30 @@
         </div>
         <button class="btn btn-primary">Go!</button>
       </div>
-
+      <!-- right-side -->
       <div class="col-md-6 right-side d-flex flex-column justify-content-center">
-        <div class="close">
+        <div class="close" (click)="close()">
           <i class="fas fa-times"></i>
         </div>
         <h1 class="title">Hello there!<br> Welcome Back</h1>
         <div class="login-form d-flex flex-column justify-content-center">
-          <div class="username-input">
-            <input type="text" class="username" placeholder="Username">
-            <div class="icon"><i class="fas fa-user"></i></div>
-          </div>
-          <div class="pass-input">
-            <input type="password" class="password" placeholder="Password">
-            <div class="icon"><i class="fas fa-lock"></i></div>
-          </div>
-          <button type="submit" class="btn btn-primary">Sign in</button>
+          <form (ngSubmit)="handleLogin(loginForm)" [formGroup]="loginForm" class="loginForm">
+            <div class="email-input">
+              <input formControlName="email" type="text" class="email" placeholder="email">
+              <div class="icon"><i class="fas fa-envelope"></i></div>
+              <div class="alert alert-danger p-2 "
+                *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+                <p class="m-0 " *ngIf="loginForm.get('email')?.getError('required')">Email is required for the login
+                  process</p>
+                <p class="m-0" *ngIf="loginForm.get('email')?.getError('email')">invalid email</p>
+              </div>
+            </div>
+            <div class="pass-input">
+              <input formControlName="password" type="password" class="password" placeholder="Password">
+              <div class="icon"><i class="fas fa-lock"></i></div>
+            </div>
+            <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Sign in</button>
+          </form>
         </div>
       </div>
     </div>

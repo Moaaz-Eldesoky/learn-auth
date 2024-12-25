@@ -1,0 +1,45 @@
+.navb {
+  margin-top: 20px;
+}
+
+.dropdown {
+  margin-left: 10px;
+}
+
+.login-part p {
+  margin-right: 10px;
+}
+
+.login-part button {
+  background-color: #fff;
+  border-color: #000;
+  height: 30px;
+  padding-top: 0px
+}
+
+.login-part a {
+  text-decoration: none;
+  color: #000;
+}
+
+.welcome-page {
+  margin-top: 10rem;
+}
+
+.welcome-page .title {
+  margin-bottom: 2.5rem;
+}
+
+.welcome-page .buttons {
+  width: 20%;
+  margin: 0 auto;
+}
+
+.buttons button {
+  margin-bottom: 10px;
+}
+
+.buttons a {
+  color: #fff;
+  text-decoration: none;
+}

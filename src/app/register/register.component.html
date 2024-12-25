@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="main">
+    <div class="row">
+      <!-- left-side -->
+      <div class="col-md-6 left-side d-flex flex-column justify-content-center">
+        <div class="menue">
+          <i class="fas fa-bars"></i>
+        </div>
+        <h1 class="title">Subscribe to get regular updates!</h1>
+        <label for="email"> Enter Your Email</label>
+        <div class="mail-input">
+          <input id="email" type="email" class="form-input" placeholder="ex. moaaz.eldesoky1@gmail.com">
+          <div class="icon"><i class="fas fa-envelope"></i></div>
+        </div>
+        <button class="btn btn-primary">Go!</button>
+      </div>
+      <!-- right-side -->
+      <div class="col-md-6 right-side d-flex flex-column justify-content-center">
+        <div class="close" (click)="close()">
+          <i class="fas fa-times"></i>
+        </div>
+        <h1 class="title">Hello there!<br> Register Now</h1>
+        <div class="login-form d-flex flex-column justify-content-center">
+          <form (ngSubmit)="handleRegister(registerForm)" [formGroup]="registerForm">
+            <div class="username-input">
+              <input type="text" class="username" placeholder="Username">
+              <div class="icon"><i class="fas fa-user"></i></div>
+            </div>
+            <div class="mail-input">
+              <input formControlName="email" id="email" type="email" class="form-input"
+                placeholder="Enter your Email address">
+              <div class="icon"><i class="fas fa-envelope"></i></div>
+              <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched "
+                class="alert alert-danger">
+                <p *ngIf="registerForm.get('email')?.getError('required')" class="m-0">Email is Required</p>
+                <p *ngIf="registerForm.get('email')?.getError('email')" class="m-0">Invalid Email please make sure it's
+                  correct</p>
+              </div>
+            </div>
+            <div class="pass-input">
+              <input formControlName="password" type="password" class="password" placeholder="Password">
+              <div class="icon"><i class="fas fa-lock"></i></div>
+            </div>
+            <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched "
+              class="alert alert-danger">
+              <p *ngIf="registerForm.get('password')?.getError('required')" class="m-0">Password is Required</p>
+              <p *ngIf="registerForm.get('password')?.getError('pattern')" class="m-0">invalid password the password
+                must....</p>
+            </div>
+            <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary"> <i
+                class="fas fa-spinner fa-spin" *ngIf="isLoading"></i><span *ngIf="!isLoading">Register</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
